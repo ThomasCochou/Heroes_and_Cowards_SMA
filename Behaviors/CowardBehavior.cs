@@ -22,7 +22,7 @@ public class CowardBehavior : MonoBehaviour {
     // Update is called once per frame  
     void Update () {  
 
-        float movementSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().speed;
+        float movementSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().agentSpeed;
         bool free = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().free;
 
         Vector3 friend_position = agent.friend.transform.position;
@@ -37,12 +37,6 @@ public class CowardBehavior : MonoBehaviour {
 
         Vector3 goal = (target - transform.position).normalized;
         Vector3 direction = transform.position + goal * movementSpeed * Time.deltaTime;
-
-        // float distance = Vector3.Distance(target, transform.position);
-        // if(distance >= 255){
-        //     distance = 255;
-        // }
-        // render.material.SetColor("_Color0", new Color((float)(distance*255)/500,0,0));
 
         if(!free){
             if (direction.x >= 50){

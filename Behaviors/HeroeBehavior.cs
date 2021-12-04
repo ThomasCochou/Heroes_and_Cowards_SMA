@@ -21,7 +21,7 @@ public class HeroeBehavior : MonoBehaviour {
     // Update is called once per frame  
     void Update () {  
 
-        float movementSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().speed;
+        float movementSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().agentSpeed;
         bool free = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().free;
 
     	Vector3 friend_position = agent.friend.transform.position;

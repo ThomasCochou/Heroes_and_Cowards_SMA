@@ -6,9 +6,10 @@ public class GeneratePrefabs : MonoBehaviour
     public int heroesNumber;
     public GameObject coward;
     public int cowardsNumber;
-    public bool threeDim;
-    public bool free;
-    public float speed;
+    public bool threeDim = false;
+    public bool free = false;
+    public float agentSpeed = 100.0f;
+    public float simuSpeed = 1.0f;
 
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
@@ -56,4 +57,10 @@ public class GeneratePrefabs : MonoBehaviour
 		}
         
     }
+
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 }

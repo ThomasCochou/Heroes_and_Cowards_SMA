@@ -457,7 +457,8 @@ MonoBehaviour:
   cowardsNumber: 50
   threeDim: 0
   free: 0
-  speed: 100
+  agentSpeed: 100
+  simuSpeed: 1
 --- !u!4 &1000868046
 Transform:
   m_ObjectHideFlags: 0

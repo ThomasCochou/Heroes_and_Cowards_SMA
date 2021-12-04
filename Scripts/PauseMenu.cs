@@ -8,14 +8,16 @@ public class PauseMenu : MonoBehaviour
 	public bool isPaused = false;
 	private bool toggleThreeDim;
 	private bool toggleFree;
-	private float sliderSpeed;
+	private float agentSliderSpeed;
+	private float simuSliderSpeed;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		toggleThreeDim = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().threeDim;
 		toggleFree = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().free;
-		sliderSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().speed;
+		agentSliderSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().agentSpeed;
+		simuSliderSpeed = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().simuSpeed;
 	}
 
 	void OnGUI () 
@@ -25,24 +27,29 @@ public class PauseMenu : MonoBehaviour
 			GUI.contentColor = Color.black;
 			GUI.Box(new Rect(Screen.width / 2 - 125 , Screen.height / 2 - 150, 250, 200), "", new GUIStyle {normal = new GUIStyleState { background = Texture2D.whiteTexture } } );
 
+			toggleThreeDim = GUI.Toggle(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 140, 200, 20),toggleThreeDim, "	3D");
+
+			toggleFree = GUI.Toggle(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 20),toggleFree, "	Free");
+			
+			
+			GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 100, 200, 20), "Agent speed = " );
+			GUI.Label(new Rect(Screen.width / 2 + 40, Screen.height / 2 - 100, 200, 20), ((int)agentSliderSpeed).ToString() );
+			agentSliderSpeed = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 80, 200, 20),agentSliderSpeed, 1.0f, 5000.0f);
+
+			GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 60, 200, 20), "Simu speed = " );
+			GUI.Label(new Rect(Screen.width / 2 + 40, Screen.height / 2 - 60, 200, 20), (simuSliderSpeed).ToString("0.##") );
+			simuSliderSpeed = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 40, 200, 20),simuSliderSpeed, 0.0f, 5.0f);
+
 			if(GUI.Button(new Rect(Screen.width / 2 - 40, Screen.height / 2, 80, 40), "Continue"))
 			{
 				isPaused = false;
 			}
-			toggleThreeDim = GUI.Toggle(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 120, 200, 20),toggleThreeDim, "	3D");
-			
-
-			toggleFree = GUI.Toggle(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 90, 200, 20),toggleFree, "	Free");
-			
-			
-			GUI.Label(new Rect(Screen.width / 2 - 40, Screen.height / 2 - 60, 200, 20), "Speed = " );
-			GUI.Label(new Rect(Screen.width / 2 + 40, Screen.height / 2 - 60, 200, 20), ((int)sliderSpeed).ToString() );
-			sliderSpeed = GUI.HorizontalSlider(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 30, 200, 20),sliderSpeed, 1.0f, 5000.0f);
 
 
 			GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().threeDim = toggleThreeDim;
 			GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().free = toggleFree;
-			GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().speed = sliderSpeed;
+			GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().agentSpeed = agentSliderSpeed;
+			GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().simuSpeed = simuSliderSpeed;
 
 		}
 	}
@@ -61,7 +68,7 @@ public class PauseMenu : MonoBehaviour
 		}
 		else
 		{
-			Time.timeScale = 1f;
+			Time.timeScale = GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().simuSpeed;
 		}
 	}
 }
