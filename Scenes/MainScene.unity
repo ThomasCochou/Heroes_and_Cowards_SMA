@@ -451,11 +451,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7567ddd596d042a4692354e5fe943f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroe: {fileID: 7571435757305053721, guid: 163c2118fccb12b4598d84257f92ffaf, type: 3}
-  heroesNumber: 50
-  coward: {fileID: 4716372715755101373, guid: 2e73c359add7e394785b9dd3b2ad322d, type: 3}
-  cowardsNumber: 50
-  threeDim: 0
+  heroe: {fileID: 4674408332612830771, guid: dc977097a5bb1e6469932c9445d4d64f, type: 3}
+  heroesNumber: 4
+  coward: {fileID: 81698878669415799, guid: 263b82e8830943a42911fc184fd1d3ae, type: 3}
+  cowardsNumber: 4
+  threeDim: 1
   free: 0
   agentSpeed: 100
   simuSpeed: 1
