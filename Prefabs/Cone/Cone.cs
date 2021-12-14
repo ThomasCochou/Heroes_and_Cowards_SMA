@@ -12,8 +12,8 @@ public class Cone : MonoBehaviour
 
 	public Material material;
 
-	public float height = 3.0f;
-	public float radius = 5.0f;
+	public float height = 2.0f;
+	public float radius = 1.0f;
 	public int segments = 7;
 
 	Vector3 pos;

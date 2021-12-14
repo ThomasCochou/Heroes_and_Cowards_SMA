@@ -16,7 +16,6 @@ public class CowardBehavior : MonoBehaviour {
         render = GetComponent<Renderer>();
 
         render.material.SetColor("_Color", new Color(255,0,0));
-
     }  
       
     // Update is called once per frame  
@@ -52,6 +51,9 @@ public class CowardBehavior : MonoBehaviour {
                 direction.z = 0;
             }  
         }
+
+        Quaternion rotation = Quaternion.LookRotation(goal, Vector3.forward);
+        transform.rotation = rotation;
 
 
         if(GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().threeDim){

@@ -52,6 +52,10 @@ public class HeroeBehavior : MonoBehaviour {
             } 
         }
 
+        Quaternion rotation = Quaternion.LookRotation(goal, Vector3.forward);
+        transform.rotation = rotation;
+
+        
         if(GameObject.FindGameObjectsWithTag("GameController")[0].GetComponent<GeneratePrefabs>().threeDim){
             if (direction.y >= 50) {
                 direction.y = 50;

@@ -268,7 +268,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -452,9 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroe: {fileID: 4674408332612830771, guid: dc977097a5bb1e6469932c9445d4d64f, type: 3}
-  heroesNumber: 4
+  heroesNumber: 15
   coward: {fileID: 81698878669415799, guid: 263b82e8830943a42911fc184fd1d3ae, type: 3}
-  cowardsNumber: 4
+  cowardsNumber: 15
   threeDim: 1
   free: 0
   agentSpeed: 100
