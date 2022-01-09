@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AgentBehavior : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class AgentBehavior : MonoBehaviour
 	public GameObject enemy;
 	public int friend_id;
 	public int enemy_id;
+	public bool clustered;
+	public List<int> clusteredId;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +48,24 @@ public class AgentBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GameObject[] agents = GameObject.FindGameObjectsWithTag("agent");
+
+		clusteredId = new List<int>();
+		clusteredId.Add(id);
+
+		foreach (GameObject agent in agents){
+			if(agent.transform.position != transform.position){
+				if(Vector3.Distance(agent.transform.position,transform.position) <= 5){
+					clustered = true;
+					clusteredId.Add(agent.GetComponent<AgentBehavior>().id);
+				}
+				else{
+					clustered = false;
+				}
+			}
+		}
+
+		clusteredId.Sort();
+
     }
 }

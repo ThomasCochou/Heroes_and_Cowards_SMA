@@ -1,4 +1,10 @@
 using UnityEngine;
+using UnityEditor;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+
+
 public class GeneratePrefabs : MonoBehaviour 
 {
     // Reference to the Prefab. Drag a Prefab into this field in the Inspector.
@@ -10,6 +16,9 @@ public class GeneratePrefabs : MonoBehaviour
     public bool free = false;
     public float agentSpeed = 100.0f;
     public float simuSpeed = 1.0f;
+
+	public int agentClustered;
+
 
     // This script will simply instantiate the Prefab when the game starts.
     void Start()
@@ -61,6 +70,40 @@ public class GeneratePrefabs : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		GameObject[] agents = GameObject.FindGameObjectsWithTag("agent");
 
+		agentClustered = 0;
+
+		List<List<int>> clusteredId = new List<List<int>>();
+
+		foreach (GameObject agent in agents){
+
+			if(agent.GetComponent<AgentBehavior>().clustered == true){
+				agentClustered = agentClustered + 1;
+			}
+
+			clusteredId.Add(agent.GetComponent<AgentBehavior>().clusteredId);
+
+		}
+
+		WriteAgentClustered("agentClustered.txt", agentClustered, clusteredId);
+
+		
 	}
+
+    static void WriteAgentClustered(string path, float agentClustered, List<List<int>> clusteredId)
+    {
+		var sr = File.CreateText(path);
+		sr.WriteLine(agentClustered.ToString());
+
+		foreach(List<int> idList in clusteredId){
+			foreach(int id in idList){
+				sr.Write(id);
+			}
+			sr.Write(";");
+		}
+
+		sr.Close();
+    }
+
 }
