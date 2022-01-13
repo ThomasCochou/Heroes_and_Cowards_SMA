@@ -452,9 +452,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroe: {fileID: 7571435757305053721, guid: 163c2118fccb12b4598d84257f92ffaf, type: 3}
-  heroesNumber: 50
+  heroesNumber: 10
   coward: {fileID: 4716372715755101373, guid: 2e73c359add7e394785b9dd3b2ad322d, type: 3}
-  cowardsNumber: 50
+  cowardsNumber: 10
   threeDim: 0
   free: 0
   agentSpeed: 100
